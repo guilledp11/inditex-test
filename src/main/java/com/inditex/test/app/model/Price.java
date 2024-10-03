@@ -36,11 +36,11 @@ public class Price {
 	@Column(name = "PRODUCT_ID", nullable = false)
 	private Long productId;
 	
-	@Temporal(value = TemporalType.TIME)
+	@Temporal(value = TemporalType.TIMESTAMP)
 	@Column(name = "START_DATE", nullable = false)
 	private LocalDateTime startDate;
 	
-	@Temporal(value = TemporalType.TIME)
+	@Temporal(value = TemporalType.TIMESTAMP)
 	@Column(name = "END_DATE", nullable = false)
 	private LocalDateTime endDate;
 	

@@ -2,12 +2,14 @@ package com.inditex.test.app.rest.response;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.util.Date;
+import java.time.LocalDateTime;
+
+import com.inditex.test.app.dto.PriceDto;
 
 /**
  * Class that represents the JSON response of the REST API.
  */
-public class TestResponse implements Serializable {
+public class CorrectPriceResponse implements Serializable {
 
 	/**
 	 * Serializable,
@@ -17,9 +19,22 @@ public class TestResponse implements Serializable {
 	private Long productId;
 	private Long brandId;
 	private Integer priceList;
-	private Date startDate;
-	private Date endDate;
+	private LocalDateTime startDate;
+	private LocalDateTime endDate;
 	private BigDecimal price;
+	
+	public static CorrectPriceResponse fromDto(PriceDto dto) {
+		CorrectPriceResponse res = new CorrectPriceResponse();
+		
+		res.setBrandId(dto.getBrandId());
+		res.setProductId(dto.getProductId());
+		res.setPriceList(dto.getPriceList());
+		res.setStartDate(dto.getStartDate());
+		res.setEndDate(dto.getEndDate());
+		res.setPrice(dto.getPrice());
+		
+		return res;
+	}
 	
 	
 	public Long getProductId() {
@@ -40,16 +55,16 @@ public class TestResponse implements Serializable {
 	public void setPriceList(Integer priceList) {
 		this.priceList = priceList;
 	}
-	public Date getStartDate() {
+	public LocalDateTime getStartDate() {
 		return startDate;
 	}
-	public void setStartDate(Date startDate) {
+	public void setStartDate(LocalDateTime startDate) {
 		this.startDate = startDate;
 	}
-	public Date getEndDate() {
+	public LocalDateTime getEndDate() {
 		return endDate;
 	}
-	public void setEndDate(Date endDate) {
+	public void setEndDate(LocalDateTime endDate) {
 		this.endDate = endDate;
 	}
 	public BigDecimal getPrice() {
