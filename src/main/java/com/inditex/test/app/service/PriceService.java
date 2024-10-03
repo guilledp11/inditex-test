@@ -1,6 +1,6 @@
 package com.inditex.test.app.service;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 import java.util.Optional;
 
 import com.inditex.test.app.dto.PriceDto;
@@ -18,5 +18,5 @@ public interface PriceService {
 	 * @param brandId   the brand of the product and pice.
 	 * @return the the Price object that should be elected.
 	 */
-	Optional<PriceDto> findActualPriceByDateAndProductIdAndBrandId(Date date, Long productId, Long brandId);
+	Optional<PriceDto> findActualPriceByDateAndProductIdAndBrandId(LocalDateTime date, Long productId, Long brandId);
 }

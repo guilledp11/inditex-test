@@ -28,6 +28,7 @@ public class Price {
 	@Column(name = "BRAND_ID", nullable = false)
 	private Long brandId;
 	
+	// No era estrictamente necesario crear la entidad Brand, pero la he creado.
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "BRAND_ID", insertable = false, updatable = false)
 	private Brand brand;
@@ -55,84 +56,127 @@ public class Price {
 	
 	@Column(name = "CURR", nullable = false)
 	private String curr;
+	
+	public Price() {}
+	
+    private Price(PriceBuilder builder) {
+        this.id = builder.id;
+        this.brandId = builder.brandId;
+        this.productId = builder.productId;
+        this.startDate = builder.startDate;
+        this.endDate = builder.endDate;
+        this.priceList = builder.priceList;
+        this.priority = builder.priority;
+        this.price = builder.price;
+        this.curr = builder.curr;
+    }
 
-	public Long getId() {
-		return id;
-	}
+    public Long getId() {
+        return id;
+    }
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    public Long getBrandId() {
+        return brandId;
+    }
 
-	public Long getBrandId() {
-		return brandId;
-	}
+    public Brand getBrand() {
+        return brand;
+    }
 
-	public void setBrandId(Long brandId) {
-		this.brandId = brandId;
-	}
+    public Long getProductId() {
+        return productId;
+    }
 
-	public Brand getBrand() {
-		return brand;
-	}
+    public LocalDateTime getStartDate() {
+        return startDate;
+    }
 
-	public void setBrand(Brand brand) {
-		this.brand = brand;
-	}
+    public LocalDateTime getEndDate() {
+        return endDate;
+    }
 
-	public Long getProductId() {
-		return productId;
-	}
+    public Integer getPriceList() {
+        return priceList;
+    }
 
-	public void setProductId(Long productId) {
-		this.productId = productId;
-	}
+    public Integer getPriority() {
+        return priority;
+    }
 
-	public LocalDateTime getStartDate() {
-		return startDate;
-	}
+    public BigDecimal getPrice() {
+        return price;
+    }
 
-	public void setStartDate(LocalDateTime startDate) {
-		this.startDate = startDate;
-	}
+    public String getCurr() {
+        return curr;
+    }
+    
+    /**
+     * Clase interna para hacer de Builder.
+     */
+    public static class PriceBuilder {
+    	
+        private Long id;
+        private Long brandId;
+        private Long productId;
+        private LocalDateTime startDate;
+        private LocalDateTime endDate;
+        private Integer priceList;
+        private Integer priority;
+        private BigDecimal price;
+        private String curr;
+        
+        /**
+         * Llama al constructor privado de la clase padre para crear la instancia.
+         * @return la instancia creada.
+         */
+        public Price build() {
+            return new Price(this);
+        }
 
-	public LocalDateTime getEndDate() {
-		return endDate;
-	}
+        public PriceBuilder setId(Long id) {
+            this.id = id;
+            return this;
+        }
 
-	public void setEndDate(LocalDateTime endDate) {
-		this.endDate = endDate;
-	}
+        public PriceBuilder setBrandId(Long brandId) {
+            this.brandId = brandId;
+            return this;
+        }
 
-	public Integer getPriceList() {
-		return priceList;
-	}
+        public PriceBuilder setProductId(Long productId) {
+            this.productId = productId;
+            return this;
+        }
 
-	public void setPriceList(Integer priceList) {
-		this.priceList = priceList;
-	}
+        public PriceBuilder setStartDate(LocalDateTime startDate) {
+            this.startDate = startDate;
+            return this;
+        }
 
-	public Integer getPriority() {
-		return priority;
-	}
+        public PriceBuilder setEndDate(LocalDateTime endDate) {
+            this.endDate = endDate;
+            return this;
+        }
 
-	public void setPriority(Integer priority) {
-		this.priority = priority;
-	}
+        public PriceBuilder setPriceList(Integer priceList) {
+            this.priceList = priceList;
+            return this;
+        }
 
-	public BigDecimal getPrice() {
-		return price;
-	}
+        public PriceBuilder setPriority(Integer priority) {
+            this.priority = priority;
+            return this;
+        }
 
-	public void setPrice(BigDecimal price) {
-		this.price = price;
-	}
+        public PriceBuilder setPrice(BigDecimal price) {
+            this.price = price;
+            return this;
+        }
 
-	public String getCurr() {
-		return curr;
-	}
-
-	public void setCurr(String curr) {
-		this.curr = curr;
-	}
+        public PriceBuilder setCurr(String curr) {
+            this.curr = curr;
+            return this;
+        }
+    }
 }

@@ -1,6 +1,6 @@
 package com.inditex.test.app.service.impl;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -23,7 +23,7 @@ public class PriceServiceImpl implements PriceService{
 	private PriceMapper mapper;
 
 	@Override
-	public Optional<PriceDto> findActualPriceByDateAndProductIdAndBrandId(Date date, Long productId, Long brandId) {
+	public Optional<PriceDto> findActualPriceByDateAndProductIdAndBrandId(LocalDateTime date, Long productId, Long brandId) {
 		List<Price> prices = this.repository.findByDateBetweenAndProductIdAndBrandId(date, productId, brandId);
 		Optional<Price> result = prices.stream().reduce((p, acc) -> (acc.getPriority() < p.getPriority()) ? p : acc);
 //		Alternativa: 

@@ -5,94 +5,122 @@ import java.time.LocalDateTime;
 
 public class PriceDto {
 
-	private Long id;
+    private Long id;
+    private Long brandId;
+    private Long productId;
+    private LocalDateTime startDate;
+    private LocalDateTime endDate;
+    private Integer priceList;
+    private Integer priority;
+    private BigDecimal price;
+    private String curr;
 
-	private Long brandId;
-	
-	private Long productId;
-	
-	private LocalDateTime startDate;
-	
-	private LocalDateTime endDate;
-	
-	private Integer priceList;
-	
-	private Integer priority;
-	
-	private BigDecimal price;
-	
-	private String curr;
+    private PriceDto(PriceDtoBuilder builder) {
+        this.id = builder.id;
+        this.brandId = builder.brandId;
+        this.productId = builder.productId;
+        this.startDate = builder.startDate;
+        this.endDate = builder.endDate;
+        this.priceList = builder.priceList;
+        this.priority = builder.priority;
+        this.price = builder.price;
+        this.curr = builder.curr;
+    }
 
-	public Long getId() {
-		return id;
-	}
+    public Long getId() {
+        return id;
+    }
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    public Long getBrandId() {
+        return brandId;
+    }
 
-	public Long getBrandId() {
-		return brandId;
-	}
+    public Long getProductId() {
+        return productId;
+    }
 
-	public void setBrandId(Long brandId) {
-		this.brandId = brandId;
-	}
+    public LocalDateTime getStartDate() {
+        return startDate;
+    }
 
-	public Long getProductId() {
-		return productId;
-	}
+    public LocalDateTime getEndDate() {
+        return endDate;
+    }
 
-	public void setProductId(Long productId) {
-		this.productId = productId;
-	}
+    public Integer getPriceList() {
+        return priceList;
+    }
 
-	public LocalDateTime getStartDate() {
-		return startDate;
-	}
+    public Integer getPriority() {
+        return priority;
+    }
 
-	public void setStartDate(LocalDateTime startDate) {
-		this.startDate = startDate;
-	}
+    public BigDecimal getPrice() {
+        return price;
+    }
 
-	public LocalDateTime getEndDate() {
-		return endDate;
-	}
+    public String getCurr() {
+        return curr;
+    }
 
-	public void setEndDate(LocalDateTime endDate) {
-		this.endDate = endDate;
-	}
+    public static class PriceDtoBuilder {
+        private Long id;
+        private Long brandId;
+        private Long productId;
+        private LocalDateTime startDate;
+        private LocalDateTime endDate;
+        private Integer priceList;
+        private Integer priority;
+        private BigDecimal price;
+        private String curr;
+        
+        public PriceDto build() {
+            return new PriceDto(this);
+        }
 
-	public Integer getPriceList() {
-		return priceList;
-	}
+        public PriceDtoBuilder setId(Long id) {
+            this.id = id;
+            return this;
+        }
 
-	public void setPriceList(Integer priceList) {
-		this.priceList = priceList;
-	}
+        public PriceDtoBuilder setBrandId(Long brandId) {
+            this.brandId = brandId;
+            return this;
+        }
 
-	public Integer getPriority() {
-		return priority;
-	}
+        public PriceDtoBuilder setProductId(Long productId) {
+            this.productId = productId;
+            return this;
+        }
 
-	public void setPriority(Integer priority) {
-		this.priority = priority;
-	}
+        public PriceDtoBuilder setStartDate(LocalDateTime startDate) {
+            this.startDate = startDate;
+            return this;
+        }
 
-	public BigDecimal getPrice() {
-		return price;
-	}
+        public PriceDtoBuilder setEndDate(LocalDateTime endDate) {
+            this.endDate = endDate;
+            return this;
+        }
 
-	public void setPrice(BigDecimal price) {
-		this.price = price;
-	}
+        public PriceDtoBuilder setPriceList(Integer priceList) {
+            this.priceList = priceList;
+            return this;
+        }
 
-	public String getCurr() {
-		return curr;
-	}
+        public PriceDtoBuilder setPriority(Integer priority) {
+            this.priority = priority;
+            return this;
+        }
 
-	public void setCurr(String curr) {
-		this.curr = curr;
-	}
+        public PriceDtoBuilder setPrice(BigDecimal price) {
+            this.price = price;
+            return this;
+        }
 
+        public PriceDtoBuilder setCurr(String curr) {
+            this.curr = curr;
+            return this;
+        }
+    }
 }

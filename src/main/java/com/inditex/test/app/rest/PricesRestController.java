@@ -1,7 +1,7 @@
 package com.inditex.test.app.rest;
 
+import java.time.LocalDateTime;
 import java.util.Arrays;
-import java.util.Date;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +30,7 @@ public class PricesRestController {
 	// Devuelva como datos de salida: identificador de producto, identificador de cadena, tarifa a aplicar, fechas de aplicación y precio final a aplicar.
 	@GetMapping("/correct-price")
 	@ResponseBody
-	public ResponseEntity<CorrectPriceResponse> findCorrectPrice(@RequestParam("date") Date applicationDate, @RequestParam("productId") Long productId, @RequestParam("brandId") Long brandId) {
+	public ResponseEntity<CorrectPriceResponse> findCorrectPrice(@RequestParam("date") LocalDateTime applicationDate, @RequestParam("productId") Long productId, @RequestParam("brandId") Long brandId) {
 		if(anyNull(applicationDate, productId, brandId)) {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
 		}
