@@ -1,4 +1,4 @@
-package com.inditex.test.app;
+package com.inditex.test.app.intergation;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
@@ -12,7 +12,7 @@ import org.springframework.test.web.servlet.MockMvc;
 
 @SpringBootTest
 @AutoConfigureMockMvc
-class CorrectPriceEndpointIntegrationTests {
+public class CorrectPriceEndpointIntegrationTests {
 
 	@Autowired
 	private MockMvc mockMvc;

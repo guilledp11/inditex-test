@@ -27,7 +27,6 @@ public class PricesRestController {
 	@Autowired
 	private PriceService service;
 
-	// Devuelva como datos de salida: identificador de producto, identificador de cadena, tarifa a aplicar, fechas de aplicación y precio final a aplicar.
 	@GetMapping("/correct-price")
 	@ResponseBody
 	public ResponseEntity<CorrectPriceResponse> findCorrectPrice(@RequestParam("date") LocalDateTime applicationDate, @RequestParam("productId") Long productId, @RequestParam("brandId") Long brandId) {
